@@ -46,7 +46,20 @@ dependencies:
   intl: ^0.18.1 #国际化
   dynamic_color: ^1.6.8 #动态颜色
 
+  #Widget
+  flutter_smart_dialog: ^4.9.2 #各种弹窗 Toast/Dialog/Popup
+  flutter_easyrefresh: 2.2.2 #下拉刷新、上拉加载
 
+
+  #系统交互
+  package_info_plus: ^4.0.2 #包信息
+  device_info_plus: ^9.0.2 #设备信息
+  share_plus: ^7.0.2 #分享
+  url_launcher: ^6.1.11 #打开链接
+  permission_handler: ^10.3.0 #权限处理
+
+  flutter_localizations:
+    sdk: flutter
 
 
 dev_dependencies:

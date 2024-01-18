@@ -132,7 +132,7 @@ class AppStyle {
     width: 48,
   );
 
-  static const edgeInsetsH4 = EdgeInsets.symmetric(horizontal: 4);
+  static const edgeInsetsH4 = EdgeInsets.symmetric(horizontal: 4);    //EdgeInsets四个方向有相同的填充量，这里是12个逻辑像素
   static const edgeInsetsH8 = EdgeInsets.symmetric(horizontal: 8);
   static const edgeInsetsH12 = EdgeInsets.symmetric(horizontal: 12);
   static const edgeInsetsH16 = EdgeInsets.symmetric(horizontal: 16);
