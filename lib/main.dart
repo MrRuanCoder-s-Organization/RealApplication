@@ -7,13 +7,18 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:logger/logger.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:real_application/routes/app_pages.dart';
 import 'package:real_application/routes/route_path.dart';
+import 'package:real_application/services/local_storage_service.dart';
 import 'package:real_application/widgets/app_loading_widget.dart';
 
 import 'app/app_style.dart';
 import 'app/controller/app_settings_controller.dart';
+import 'app/core_log.dart';
 import 'app/log.dart';
+import 'app/utils.dart';
 import 'modules/other/debug_log_page.dart';
 
 void main() async {
@@ -22,7 +27,7 @@ void main() async {
   await Hive.initFlutter();   //本地存储库
 
   //初始化服务
-  // await initServices();
+  await initServices();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   //设置状态栏为透明
   SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
@@ -33,6 +38,39 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 
   runApp(const MyApp());
+}
+
+Future initServices() async {
+  //日志信息
+  CoreLog.enableLog = !kReleaseMode;
+  CoreLog.onPrintLog = (level, msg) {
+    switch (level) {
+      case Level.debug:
+        Log.d(msg);
+        break;
+      case Level.error:
+        Log.e(msg, StackTrace.current);
+        break;
+      case Level.info:
+        Log.i(msg);
+        break;
+      case Level.warning:
+        Log.w(msg);
+        break;
+      default:
+        Log.logPrint(msg);
+    }
+  };
+
+
+  //包信息
+  Utils.packageInfo = await PackageInfo.fromPlatform();
+  //本地存储
+  Log.d("Init LocalStorage Service");
+  await Get.put(LocalStorageService()).init();
+  //初始化设置控制器
+  Get.put(AppSettingsController());
+
 }
 
 class MyApp extends StatelessWidget {

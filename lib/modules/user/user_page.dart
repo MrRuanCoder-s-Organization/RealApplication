@@ -5,6 +5,7 @@ import 'package:remixicon/remixicon.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../app/app_style.dart';
+import '../../app/utils.dart';
 import '../../routes/route_path.dart';
 
 class UserPage extends StatelessWidget {
@@ -27,49 +28,28 @@ class UserPage extends StatelessWidget {
             AppStyle.vGap12,
             ListTile(
               leading: Image.asset(
-                'assets/images/logo.png',
+                'assets/images/音乐.png',
                 width: 56,
                 height: 56,
               ),
               title: const Text(
-                "Simple Live",
+                "The Sound Of Silence",
                 style: TextStyle(height: 1.0),
               ),
-              subtitle: const Text("简简单单看直播"),
+              subtitle: const Text("一款专为听障人士设计的APP"),
               trailing: const Icon(Icons.chevron_right),
               onTap: () {
                 Get.dialog(AboutDialog(
                   applicationIcon: Image.asset(
-                    'assets/images/logo.png',
+                    'assets/images/音乐.png',
                     width: 48,
                     height: 48,
                   ),
-                  applicationName: "Simple Live",
-                  applicationVersion: "简简单单看直播",
+                  applicationName: "The Sound Of Silence",
+                  applicationVersion: "一款专为听障人士设计的APP",
                   applicationLegalese: "Ver ${Utils.packageInfo.version}",
                 ));
               },
-            ),
-            Divider(
-              indent: 12,
-              endIndent: 12,
-              color: Colors.grey.withOpacity(.1),
-            ),
-            _buildCard(
-              context,
-              children: [
-                ListTile(
-                  leading: const Icon(Remix.history_line),
-                  title: const Text("观看记录"),
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.grey,
-                  ),
-                  onTap: () {
-                    Get.toNamed(RoutePath.kHistory);
-                  },
-                ),
-              ],
             ),
             Divider(
               indent: 12,
@@ -84,23 +64,7 @@ class UserPage extends StatelessWidget {
                 color: Colors.grey,
               ),
               onTap: () {
-                Get.toNamed(RoutePath.kSettingsAccount);
-              },
-            ),
-            Divider(
-              indent: 12,
-              endIndent: 12,
-              color: Colors.grey.withOpacity(.1),
-            ),
-            ListTile(
-              leading: const Icon(Remix.link),
-              title: const Text("链接解析"),
-              trailing: const Icon(
-                Icons.chevron_right,
-                color: Colors.grey,
-              ),
-              onTap: () {
-                Get.toNamed(RoutePath.kTools);
+                // Get.toNamed(RoutePath.kSettingsAccount);
               },
             ),
             Divider(
@@ -131,28 +95,6 @@ class UserPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Get.toNamed(RoutePath.kSettingsIndexed);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Remix.play_circle_line),
-                  title: const Text("直播设置"),
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.grey,
-                  ),
-                  onTap: () {
-                    Get.toNamed(RoutePath.kSettingsPlay);
-                  },
-                ),
-                ListTile(
-                  leading: const Icon(Remix.text),
-                  title: const Text("弹幕设置"),
-                  trailing: const Icon(
-                    Icons.chevron_right,
-                    color: Colors.grey,
-                  ),
-                  onTap: () {
-                    Get.toNamed(RoutePath.kSettingsDanmu);
                   },
                 ),
                 ListTile(
@@ -194,7 +136,7 @@ class UserPage extends StatelessWidget {
                   ),
                   onTap: () {
                     launchUrlString(
-                      "https://github.com/xiaoyaocz/dart_simple_live",
+                      "https://github.com/MrRuanCoder-s-Organization/RealApplication",
                       mode: LaunchMode.externalApplication,
                     );
                   },
@@ -214,7 +156,7 @@ class UserPage extends StatelessWidget {
                     ],
                   ),
                   onTap: () {
-                    Utils.checkUpdate(showMsg: true);
+                    // Utils.checkUpdate(showMsg: true);
                   },
                 ),
               ],

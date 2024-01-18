@@ -1,10 +1,15 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
+import 'package:real_application/modules/pinyin/pinyin_controller.dart';
 
 import '../../app/constant.dart';
 import '../../app/controller/app_settings_controller.dart';
 import '../../app/event_bus.dart';
+import '../home/home_controller.dart';
+import '../home/home_page.dart';
+import '../pinyin/pinyin_page.dart';
+import '../user/user_page.dart';
 
 class IndexedController extends GetxController {
   RxList<HomePageItem> items = RxList<HomePageItem>([]);
@@ -25,12 +30,12 @@ class IndexedController extends GetxController {
           pages[i] = const HomePage();
           break;
         case 1:
-          Get.put(FollowUserController());
-          pages[i] = const FollowUserPage();
+          Get.put(PinyinController());
+          pages[i] = const PinyinPage();
           break;
         case 2:
-          Get.put(CategoryController());
-          pages[i] = const CategoryPage();
+          Get.put(PinyinController());
+          pages[i] = const PinyinPage();
           break;
         case 3:
           pages[i] = const UserPage();

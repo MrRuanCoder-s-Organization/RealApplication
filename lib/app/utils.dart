@@ -16,7 +16,7 @@ import 'app_style.dart';
 import 'log.dart';
 
 class Utils {
-  static late PackageInfo packageInfo;
+  static late PackageInfo packageInfo;      //应用包信息
   static DateFormat dateFormat = DateFormat("MM-dd HH:mm");
   static DateFormat dateFormatWithYear = DateFormat("yyyy-MM-dd HH:mm");
 
@@ -286,7 +286,7 @@ class Utils {
             },
           ),
         )
-            .toList(),
+            .toList(),        //将可迭代的元素（如 Set、Map 的输出或任何 Iterable 类型）转换成一个列表
       ),
     );
     return result;
@@ -332,68 +332,68 @@ class Utils {
     return result;
   }
 
-  static void checkUpdate({bool showMsg = false}) async {
-    try {
-      int currentVer = Utils.parseVersion(packageInfo.version);
-      CommonRequest request = CommonRequest();
-      var versionInfo = await request.checkUpdate();
-      if (versionInfo.versionNum > currentVer) {
-        Get.dialog(
-          AlertDialog(
-            title: Text(
-              "发现新版本 ${versionInfo.version}",
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 18),
-            ),
-            content: Text(
-              versionInfo.versionDesc,
-              style: const TextStyle(fontSize: 14, height: 1.4),
-            ),
-            actionsPadding: AppStyle.edgeInsetsH12,
-            actions: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: const Text("取消"),
-                    ),
-                  ),
-                  AppStyle.hGap12,
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                      ),
-                      onPressed: () {
-                        launchUrlString(
-                          versionInfo.downloadUrl,
-                          mode: LaunchMode.externalApplication,
-                        );
-                      },
-                      child: const Text("更新"),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      } else {
-        if (showMsg) {
-          SmartDialog.showToast("当前已经是最新版本了");
-        }
-      }
-    } catch (e) {
-      Log.logPrint(e);
-      if (showMsg) {
-        SmartDialog.showToast("检查更新失败");
-      }
-    }
-  }
+  // static void checkUpdate({bool showMsg = false}) async {
+  //   try {
+  //     int currentVer = Utils.parseVersion(packageInfo.version);
+  //     CommonRequest request = CommonRequest();
+  //     var versionInfo = await request.checkUpdate();
+  //     if (versionInfo.versionNum > currentVer) {
+  //       Get.dialog(
+  //         AlertDialog(
+  //           title: Text(
+  //             "发现新版本 ${versionInfo.version}",
+  //             textAlign: TextAlign.center,
+  //             style: const TextStyle(fontSize: 18),
+  //           ),
+  //           content: Text(
+  //             versionInfo.versionDesc,
+  //             style: const TextStyle(fontSize: 14, height: 1.4),
+  //           ),
+  //           actionsPadding: AppStyle.edgeInsetsH12,
+  //           actions: [
+  //             Row(
+  //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //               children: [
+  //                 Expanded(
+  //                   child: TextButton(
+  //                     onPressed: () {
+  //                       Get.back();
+  //                     },
+  //                     child: const Text("取消"),
+  //                   ),
+  //                 ),
+  //                 AppStyle.hGap12,
+  //                 Expanded(
+  //                   child: ElevatedButton(
+  //                     style: ElevatedButton.styleFrom(
+  //                       elevation: 0,
+  //                     ),
+  //                     onPressed: () {
+  //                       launchUrlString(
+  //                         versionInfo.downloadUrl,
+  //                         mode: LaunchMode.externalApplication,
+  //                       );
+  //                     },
+  //                     child: const Text("更新"),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     } else {
+  //       if (showMsg) {
+  //         SmartDialog.showToast("当前已经是最新版本了");
+  //       }
+  //     }
+  //   } catch (e) {
+  //     Log.logPrint(e);
+  //     if (showMsg) {
+  //       SmartDialog.showToast("检查更新失败");
+  //     }
+  //   }
+  // }
 
   static int parseVersion(String version) {
     var sp = version.split('.');
