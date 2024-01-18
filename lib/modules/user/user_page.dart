@@ -27,11 +27,11 @@ class UserPage extends StatelessWidget {
           children: [
             AppStyle.vGap12,
             ListTile(
-              leading: Image.asset(
-                'assets/images/音乐.png',
-                width: 56,
-                height: 56,
-              ),
+              // leading: Image.asset(
+              //   'assets/images/音乐.png',
+              //   width: 56,
+              //   height: 56,
+              // ),
               title: const Text(
                 "The Sound Of Silence",
                 style: TextStyle(height: 1.0),
@@ -39,7 +39,8 @@ class UserPage extends StatelessWidget {
               subtitle: const Text("一款专为听障人士设计的APP"),
               trailing: const Icon(Icons.chevron_right),
               onTap: () {
-                Get.dialog(AboutDialog(
+                Get.dialog(
+                  AboutDialog(
                   applicationIcon: Image.asset(
                     'assets/images/音乐.png',
                     width: 48,
