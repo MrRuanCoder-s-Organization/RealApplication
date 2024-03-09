@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:real_application/modules/pinyin/pinyin_controller.dart';
 
+import '../../routes/route_path.dart';
+
 class PinyinPage extends GetView<PinyinController> {
   const PinyinPage({Key? key}) : super(key: key);
 
@@ -105,19 +107,24 @@ class PinyinPage extends GetView<PinyinController> {
             runSpacing: 20,  // 垂直间距
             children: [
               // 下面的 Container 定义可以重复用以创建其他按钮
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(10),  // 添加圆角
-                ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children:  [
-                    Text('我', style: TextStyle(fontSize: 24)),
-                    Text('wǒ', style: TextStyle(fontSize: 18)),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(RoutePath.kLanguage);
+                },
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),  // 添加圆角
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:  [
+                      Text('词组练习', style: TextStyle(fontSize: 24)),
+                      Text('选择类别', style: TextStyle(fontSize: 18)),
+                    ],
+                  ),
                 ),
               ),
               Container(

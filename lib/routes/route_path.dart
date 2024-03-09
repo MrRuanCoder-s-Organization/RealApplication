@@ -18,6 +18,9 @@ class RoutePath {
   /// 外观设置
   static const kAppstyleSetting = "/settings/appstyle";
 
+  /// 语训页面
+  static const kLanguage = "/pinyin/word_class";
+
   /// 账号管理
   // static const kSettingsAccount = "/settings/account";
 
