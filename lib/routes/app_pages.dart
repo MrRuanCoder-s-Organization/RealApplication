@@ -10,6 +10,9 @@ import '../modules/user/indexed_settings/indexed_settings_controller.dart';
 import '../modules/user/indexed_settings/indexed_settings_page.dart';
 import 'route_path.dart';
 import '../modules/pinyin/word_class_page.dart';
+import '../modules/pinyin/level_choose_page.dart';
+import '../modules/whiteboard/white_board_page.dart';
+import '../modules/whiteboard/white_board_controller.dart';
 
 class AppPages {
   AppPages._();     //_为定义的一个私有的构造函数，故该实例不能从外部创建，提供了一个集中的地方来定义和管理应用程序的所有路由。
@@ -49,11 +52,24 @@ class AppPages {
         BindingsBuilder.put(() => IndexedSettingsController()),
       ],
     ),
-    // 语训页面
+    // 语训页面: 选择词语类别
     GetPage(
       name: RoutePath.kLanguage,
       page: () => const WordClassPage(),
 
+    ),
+    // 选关页面
+    GetPage(
+      name: RoutePath.kLevelChoose,
+      page: () => LevelChoosePage(),
+    ),
+    //白板页面
+    GetPage(
+      name: RoutePath.kWhiteBoard,
+      page: () => WhiteBoardPage(),
+      bindings: [
+        BindingsBuilder.put(() => WhiteBoardController()),
+      ],
     ),
     // //账号设置
     // GetPage(

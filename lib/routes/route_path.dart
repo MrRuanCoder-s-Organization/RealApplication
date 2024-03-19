@@ -18,8 +18,14 @@ class RoutePath {
   /// 外观设置
   static const kAppstyleSetting = "/settings/appstyle";
 
-  /// 语训页面
+  /// 词组语训页面
   static const kLanguage = "/pinyin/word_class";
+
+  /// 选关页面
+  static const kLevelChoose = "/pinyin/level_choose";
+
+  /// 白板页面
+  static const kWhiteBoard = "/whiteboard";
 
   /// 账号管理
   // static const kSettingsAccount = "/settings/account";

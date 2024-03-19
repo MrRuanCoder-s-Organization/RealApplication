@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:real_application/modules/pinyin/word_class_controller.dart';
 
-import '../pinyin/pinyin_page.dart';
+import '../../routes/route_path.dart';
 
 class WordClassPage extends GetView<WordClassController> {
   const WordClassPage({Key? key}) : super(key: key);
+  // var classChoose = "生活".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +25,24 @@ class WordClassPage extends GetView<WordClassController> {
         body: GridView.count(
           crossAxisCount: 3, // 每行显示3个网格
           children: List.generate(12, (index) {
-            return Card(
-              child: Container(
-                color: Colors.grey[300], // 替换为实际的图像
-                child: Center(
-                  child: Text(
-                    iconLabels[index],
-                    style: TextStyle(fontSize: 18),
+            // 为每个Card添加InkWell来监听点击事件
+            return InkWell(
+              onTap: () {
+                // 用 obs 变量来传递数据，这里传递选择的图标标签
+                // classChoose.value = iconLabels[index];
+                Get.toNamed(
+                  RoutePath.kLevelChoose,
+                  arguments: iconLabels[index],
+                );
+              },
+              child: Card(
+                child: Container(
+                  color: Colors.grey[300], // 替换为实际的图像
+                  child: Center(
+                    child: Text(
+                      iconLabels[index],
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 ),
               ),
