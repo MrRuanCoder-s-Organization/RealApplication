@@ -49,11 +49,17 @@ class WhiteBoardPage extends GetView<WhiteBoardController> {
                     ),
                   ),
                 ),
-                StorkWidthSelector(
-                  supportStorkWidths: controller.supportStorkWidths,
-                  color: controller.supportColors[controller.activeColorIndex],
-                  activeIndex: controller.activeStorkWidthIndex,
-                  onSelect: controller.onSelectStorkWidth,
+                Expanded(
+                  child: GetBuilder<WhiteBoardController>(
+                    id: 'storkWidthSelector',
+                    builder: (_) =>StorkWidthSelector(
+                        supportStorkWidths: controller.supportStorkWidths,
+                        color: controller.supportColors[controller.activeColorIndex],
+                        activeIndex: controller.activeStorkWidthIndex,
+                        onSelect: controller.onSelectStorkWidth,
+                      ),
+
+                  ),
                 ),
               ],
             ),
