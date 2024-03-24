@@ -14,6 +14,9 @@ import '../modules/pinyin/level_choose_page.dart';
 import '../modules/whiteboard/white_board_page.dart';
 import '../modules/whiteboard/white_board_controller.dart';
 
+import '../modules/speechevaluation/speech_evaluation_controller.dart';
+import '../modules/speechevaluation/speech_evaluation_page.dart';
+
 class AppPages {
   AppPages._();     //_为定义的一个私有的构造函数，故该实例不能从外部创建，提供了一个集中的地方来定义和管理应用程序的所有路由。
   static final routes = [
@@ -70,6 +73,11 @@ class AppPages {
       bindings: [
         BindingsBuilder.put(() => WhiteBoardController()),
       ],
+    ),
+    // 录音评测页面
+    GetPage(
+      name: RoutePath.kRecordEvaluation,
+      page: () => const SpeechEvaluationPage(),
     ),
     // //账号设置
     // GetPage(

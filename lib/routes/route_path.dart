@@ -27,6 +27,9 @@ class RoutePath {
   /// 白板页面
   static const kWhiteBoard = "/whiteboard";
 
+  /// 录音评测页面
+  static const kRecordEvaluation = "/record_evaluation";
+
   /// 账号管理
   // static const kSettingsAccount = "/settings/account";
 

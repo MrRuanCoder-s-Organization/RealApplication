@@ -16,12 +16,32 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('首页'),
       ),
+      // body: Center(
+      //   child: ElevatedButton(
+      //     onPressed: () {
+      //       Get.toNamed(RoutePath.kWhiteBoard);
+      //     },
+      //     child: const Text('跳转到白板'),
+      //   ),
+      // ),
+      // 再做一个按钮，点击get入kSpeechEvaluation, 两个按钮都要在
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Get.toNamed(RoutePath.kWhiteBoard);
-          },
-          child: const Text('跳转到白板'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.kWhiteBoard);
+              },
+              child: const Text('跳转到白板'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.kRecordEvaluation);
+              },
+              child: const Text('跳转到语音评测'),
+            ),
+          ],
         ),
       ),
     );
