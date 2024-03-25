@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../modules/indexed/indexed_controller.dart';
 import '../modules/indexed/indexed_page.dart';
+import '../modules/text2speech/tts_page.dart';
 import '../modules/user/appstyle_setting_page.dart';
 import '../modules/user/auto_exit_settings_page.dart';
 import '../modules/user/indexed_settings/indexed_settings_controller.dart';
@@ -70,6 +71,14 @@ class AppPages {
       bindings: [
         BindingsBuilder.put(() => WhiteBoardController()),
       ],
+    ),
+    //文字转语音
+    GetPage(
+      name: RoutePath.ttsPage,
+      page: () => const TtsPage(),
+      // bindings: [
+      //   BindingsBuilder.put(() => WhiteBoardController()),
+      // ],
     ),
     // //账号设置
     // GetPage(

@@ -47,6 +47,7 @@ dependencies:
   logger: ^2.0.2 #日志
   intl: ^0.18.1 #国际化
   dynamic_color: ^1.6.8 #动态颜色
+  flutter_tts: ^3.8.3 #文字转语音
 
   #Widget
   flutter_smart_dialog: ^4.9.2 #各种弹窗 Toast/Dialog/Popup

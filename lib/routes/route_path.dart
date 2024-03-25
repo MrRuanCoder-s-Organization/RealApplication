@@ -27,6 +27,9 @@ class RoutePath {
   /// 白板页面
   static const kWhiteBoard = "/whiteboard";
 
+  ///语音转文字
+  static const ttsPage = "/ttspage";
+
   /// 账号管理
   // static const kSettingsAccount = "/settings/account";
 

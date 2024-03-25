@@ -17,11 +17,23 @@ class HomePage extends GetView<HomeController> {
         title: const Text('首页'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Get.toNamed(RoutePath.kWhiteBoard);
-          },
-          child: const Text('跳转到白板'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.kWhiteBoard);
+              },
+              child: const Text('跳转到白板'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.ttsPage);
+              },
+              child: const Text('文字转语音'),
+            ),
+          ],
         ),
       ),
     );
