@@ -33,6 +33,12 @@ class HomePage extends GetView<HomeController> {
               },
               child: const Text('文字转语音'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.kRecordEvaluation);
+              },
+              child: const Text('跳转到语音评测'),
+            ),
           ],
         ),
       ),
