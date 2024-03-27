@@ -54,6 +54,12 @@ class SpeechEvaluationPage extends GetView<SpeechEvaluationController> {
                 ),
               ),
               SizedBox(height: 40),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: controller.playRecording,
+                child: Text('回放录音'),
+              ),
+              SizedBox(height: 40),
             ],
           ),
         );
