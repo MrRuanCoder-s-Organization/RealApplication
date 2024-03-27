@@ -33,11 +33,19 @@ class HomePage extends GetView<HomeController> {
               },
               child: const Text('文字转语音'),
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Get.toNamed(RoutePath.kRecordEvaluation);
               },
               child: const Text('跳转到语音评测'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed(RoutePath.kXfRecognition);
+              },
+              child: const Text('跳转到讯飞识别'),
             ),
           ],
         ),

@@ -9,6 +9,7 @@ import '../modules/user/appstyle_setting_page.dart';
 import '../modules/user/auto_exit_settings_page.dart';
 import '../modules/user/indexed_settings/indexed_settings_controller.dart';
 import '../modules/user/indexed_settings/indexed_settings_page.dart';
+import '../modules/xfstt/xf_stt_page.dart';
 import 'route_path.dart';
 import '../modules/pinyin/word_class_page.dart';
 import '../modules/pinyin/level_choose_page.dart';
@@ -87,6 +88,10 @@ class AppPages {
     GetPage(
       name: RoutePath.kRecordEvaluation,
       page: () => const SpeechEvaluationPage(),
+    ),
+    GetPage(
+      name: RoutePath.kXfRecognition,
+      page: () => XfSpeechRecognition(),
     ),
     // //账号设置
     // GetPage(

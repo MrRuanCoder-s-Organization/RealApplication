@@ -33,6 +33,9 @@ class RoutePath {
   /// 录音评测页面
   static const kRecordEvaluation = "/record_evaluation";
 
+  /// 讯飞语音识别
+  static const kXfRecognition = "/xfstt";
+
   /// 账号管理
   // static const kSettingsAccount = "/settings/account";
 
