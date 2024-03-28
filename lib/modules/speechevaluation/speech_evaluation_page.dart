@@ -7,6 +7,9 @@ class SpeechEvaluationPage extends GetView<SpeechEvaluationController> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SpeechEvaluationController());
+    controller.setText("词语");
+
     return GetBuilder<SpeechEvaluationController>(
       init: SpeechEvaluationController(),
       builder: (controller) {
@@ -30,10 +33,7 @@ class SpeechEvaluationPage extends GetView<SpeechEvaluationController> {
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
-              Text(
-                '预留分数显示位置',
-                style: TextStyle(fontSize: 20),
-              ),
+              Obx(() => Text('评测结果: ${controller.score}')),
               SizedBox(height: 40),
               GestureDetector(
                 onLongPress: controller.startRecording,
