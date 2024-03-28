@@ -17,8 +17,13 @@ class IseService {
   String? _sid;
 
   Future<void> init() async {
-    final url = Uri.parse(await _getAuthUrl());
-    _channel = IOWebSocketChannel.connect(url);
+    try {
+      final url = Uri.parse(await _getAuthUrl());
+      _channel = IOWebSocketChannel.connect(url);
+    } catch (e) {
+      print('Error initializing ISE service: $e');
+      rethrow;
+    }
   }
 
   Future<void> send(Uint8List audio, {String? text, bool isEnd = false}) async {
@@ -65,18 +70,25 @@ class IseService {
       throw Exception('WebSocket connection not initialized');
     }
 
-    return _channel!.stream.map((message) {
-      final Map<String, dynamic> response = jsonDecode(message);
-      _sid = response['sid'];
-      return response;
-    });
+    return _channel!.stream.transform(StreamTransformer.fromHandlers(
+      handleData: (data, sink) {
+        final Map<String, dynamic> response = jsonDecode(data);
+        _sid = response['sid'];
+        sink.add(response);
+      },
+    ));
   }
 
   Future<String> _getAuthUrl() async {
     final date = DateFormat('EEE, dd MMM yyyy HH:mm:ss z', 'en_US').format(DateTime.now().toUtc());
+    print('date: $date');
     final signatureOrigin = 'host: ${Uri.parse(_hostUrl).host}\ndate: $date\nGET ${Uri.parse(_hostUrl).path} HTTP/1.1';
+    print('signatureOrigin: $signatureOrigin');
     final signature = base64.encode(Hmac(sha256, utf8.encode(_apiSecret)).convert(utf8.encode(signatureOrigin)).bytes);
+    print('signature: $signature');
     final authorization = 'api_key="$_apiKey", algorithm="hmac-sha256", headers="host date request-line", signature="$signature"';
-    return '$_hostUrl?authorization=${Uri.encodeComponent(authorization)}&date=${Uri.encodeComponent(date)}&host=${Uri.parse(_hostUrl).host}';
+    print('authorization: $authorization');
+    print('host: ${Uri.parse(_hostUrl).host}');
+    return '$_hostUrl?authorization=${Uri.encodeQueryComponent(authorization)}&date=${Uri.encodeQueryComponent(date)}&host=${Uri.parse(_hostUrl).host}';
   }
 }
